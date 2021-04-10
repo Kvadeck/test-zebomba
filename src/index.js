@@ -1,18 +1,22 @@
-import './styles/index.scss'
-// eslint-disable-next-line no-unused-vars
-import { h } from 'dom-chef'
+import './styles/index.scss';
+import Game from './js/modules/Game';
+import Chip from './js/modules/Chip';
+import Menu from './js/modules/Menu';
+import Slider from './js/modules/Slider';
+import Button from './js/modules/Button';
 
-// const handleClick = () => {
-//   // e.preventDefault()
-//   // console.log('kek')
-// }
-
-const main = { padding: 10, background: '#000' }
-
-const App = (
-  <main style={main}>
-    <div className="game"></div>
-  </main>
-)
-
-document.getElementById('root').appendChild(App)
+(function main() {
+  try {
+    Game();
+    Menu();
+    Slider();
+    Button('chat');
+    Button('university');
+    Button('email');
+    Button('score');
+    Chip();
+  } catch (err) {
+    // eslint-disable-next-line no-alert
+    console.log(err);
+  }
+}());

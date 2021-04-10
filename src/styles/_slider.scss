@@ -1,0 +1,98 @@
+.slider {
+    display: flex;
+    height: 64px;
+    width: 548px;
+    align-items: center;
+    background-image: url(../images/main/friends.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    justify-content: space-between;
+    padding: 0 5px;
+    box-sizing: border-box;
+    margin: 0 3px;
+    padding: 0 6px;
+
+    .back-button,
+    .forward-button {
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center;
+        width: 32px;
+        height: 32px;
+        cursor: pointer;
+        user-select: none;
+
+        &:active {
+            filter: brightness(0.8);
+        }
+    }
+
+    .back-button {
+        background-image: url(../images/main/back.png);
+    }
+
+    .forward-button {
+        background-image: url(../images/main/forward.png);
+    }
+
+    .addfriend-button {
+        background-image: url(../images/main/user-bg.png);
+        width: 52px;
+        height: 52px;
+        margin: 0 4px;
+        background-size: cover;
+        background-repeat: no-repeat;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex: 0 0 auto;
+        cursor: pointer;
+        user-select: none;
+
+        &:active {
+            filter: brightness(0.8);
+        }
+
+        &:before {
+            content: "";
+            display: block;
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            background-image: url(../images/main/plus.png);
+            margin-top: -35px;
+            margin-left: 45px;
+        }
+    }
+
+    .slider-inner {
+        overflow: hidden;
+        width: 100%;
+        padding: 5px;
+    }
+
+    .slider-list {
+        display: inline-flex;
+        height: 64px;
+        align-items: center;
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        overflow: hidden;
+    }
+
+    .slider-item {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex: 0 0 auto;
+        background-image: url(../images/main/user-bg.png);
+        width: 52px;
+        height: 52px;
+        margin: 0 4px;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+
+}

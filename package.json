@@ -47,6 +47,8 @@
     "url": ""
   },
   "dependencies": {
+    "eslint-config-airbnb": "^18.2.1",
+    "node-sass-glob-importer": "^5.3.2",
     "normalize.css": "^8.0.1"
   }
 }

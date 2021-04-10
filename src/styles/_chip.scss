@@ -1,0 +1,12 @@
+.chip {
+    width: 20px;
+    height: 69px;
+    position: absolute;
+    cursor: pointer;
+    left: 434px;
+    top: 426px;
+
+    &:hover {
+        filter: brightness(1.2);
+    }
+}

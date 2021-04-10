@@ -1,0 +1,36 @@
+.button {
+    &:active {
+        filter: brightness(0.8);
+    }
+
+    user-select: none;
+    cursor: pointer;
+    background-repeat: no-repeat;
+    background-size: contain;
+    align-self: flex-end;
+    margin: 0 3px;
+}
+
+.button.chat {
+    background-image: url(../images/main/chat.png);
+    width: 64px;
+    height: 64px;
+}
+
+.button.email {
+    background-image: url(../images/main/email.png);
+    width: 64px;
+    height: 64px;
+}
+
+.button.score {
+    background-image: url(../images/main/score.png);
+    width: 64px;
+    height: 64px;
+}
+
+.button.university {
+    background-image: url(../images/main/university.png);
+    width: 190px;
+    height: 64px;
+}
