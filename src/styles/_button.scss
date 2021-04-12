@@ -1,8 +1,4 @@
-.button {
-    &:active {
-        filter: brightness(0.8);
-    }
-
+.btn {
     user-select: none;
     cursor: pointer;
     background-repeat: no-repeat;
@@ -11,25 +7,25 @@
     margin: 0 3px;
 }
 
-.button.chat {
+.btn.chat {
     background-image: url(../images/main/chat.png);
     width: 64px;
     height: 64px;
 }
 
-.button.email {
+.btn.email {
     background-image: url(../images/main/email.png);
     width: 64px;
     height: 64px;
 }
 
-.button.score {
+.btn.score {
     background-image: url(../images/main/score.png);
     width: 64px;
     height: 64px;
 }
 
-.button.university {
+.btn.university {
     background-image: url(../images/main/university.png);
     width: 190px;
     height: 64px;

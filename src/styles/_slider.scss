@@ -12,8 +12,8 @@
     margin: 0 3px;
     padding: 0 6px;
 
-    .back-button,
-    .forward-button {
+    .back-btn,
+    .forward-btn {
         background-repeat: no-repeat;
         background-size: contain;
         background-position: center;
@@ -21,21 +21,17 @@
         height: 32px;
         cursor: pointer;
         user-select: none;
-
-        &:active {
-            filter: brightness(0.8);
-        }
     }
 
-    .back-button {
+    .back-btn {
         background-image: url(../images/main/back.png);
     }
 
-    .forward-button {
+    .forward-btn {
         background-image: url(../images/main/forward.png);
     }
 
-    .addfriend-button {
+    .addfriend-btn {
         background-image: url(../images/main/user-bg.png);
         width: 52px;
         height: 52px;

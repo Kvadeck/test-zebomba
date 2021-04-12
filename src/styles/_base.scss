@@ -22,8 +22,21 @@ h1 {
 #root {
   display: flex;
   flex-direction: column;
-  overflow: hidden;
   align-items: center;
   justify-content: center;
   height: 100vh;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+
+  &:active {
+    filter: brightness(0.8);
+  }
+
+  &:focus {
+    outline: none;
+  }
 }

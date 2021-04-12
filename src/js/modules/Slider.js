@@ -5,34 +5,17 @@ const SCROLL_STEP = 60;
 
 export default function Slider() {
   const menu = document.querySelector('.menu');
-  menu.insertAdjacentHTML('beforeend', '<div class="slider"></div>');
-
-  (function backBtn() {
-    const slider = document.querySelector('.slider');
-    slider.insertAdjacentHTML('beforeend', '<span class="back-button"></span>');
-  }());
-
-  (function addFriendBtn() {
-    const slider = document.querySelector('.slider');
-    slider.insertAdjacentHTML('beforeend', '<span class="addfriend-button"></span>');
-
-    const addfriend = document.querySelector('.addfriend-button');
-    addfriend.insertAdjacentHTML('beforeend', `<img alt="add user" src=${noPhotoImg}>`);
-  }());
+  menu.insertAdjacentHTML('beforeend', `<div class="slider"><button class="back-btn"></button><button class="addfriend-btn"><img alt="add user" src=${noPhotoImg}></button></div>`);
 
   (function sliderInner() {
     const slider = document.querySelector('.slider');
-    slider.insertAdjacentHTML('beforeend', '<div class="slider-inner"></div>');
-
-    const sliderInnerEl = document.querySelector('.slider-inner');
-    sliderInnerEl.insertAdjacentHTML('beforeend', '<ul class="slider-list"></ul>');
-
+    slider.insertAdjacentHTML('beforeend', '<div class="slider-inner"><ul class="slider-list"></ul></div>');
     const sliderList = document.querySelector('.slider-list');
 
     const items = [];
 
     const noPhoto = `<img alt="no photo user" src=${noPhotoImg}>`;
-    const empty = '<span></span>';
+    const empty = '<span class="empty"></span>';
 
     for (let i = USERS; i--;) {
       items.push(`<li class="slider-item">
@@ -44,7 +27,7 @@ export default function Slider() {
 
   (function forwardBtn() {
     const slider = document.querySelector('.slider');
-    slider.insertAdjacentHTML('beforeend', '<span class="forward-button"></span>');
+    slider.insertAdjacentHTML('beforeend', '<button class="forward-btn"></button>');
   }());
 
   function slideForward() {
@@ -52,7 +35,7 @@ export default function Slider() {
     sliderList.scrollLeft += SCROLL_STEP;
   }
 
-  const forwardButton = document.querySelector('.forward-button');
+  const forwardButton = document.querySelector('.forward-btn');
   forwardButton.addEventListener('click', slideForward, false);
 
   function slideBackward() {
@@ -60,6 +43,6 @@ export default function Slider() {
     sliderList.scrollLeft -= SCROLL_STEP;
   }
 
-  const backButton = document.querySelector('.back-button');
+  const backButton = document.querySelector('.back-btn');
   backButton.addEventListener('click', slideBackward, false);
 }
