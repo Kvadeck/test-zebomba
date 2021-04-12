@@ -1,3 +1,5 @@
+![alt text](https://github.com/Kvadeck/test-zebomba/blob/master/main.jpg?raw=true)
+
 Тестовое задание на должность «Frontend-разработчик»
 
 Время: 19 часов.
