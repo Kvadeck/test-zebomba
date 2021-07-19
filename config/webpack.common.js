@@ -67,6 +67,16 @@ module.exports = {
             },
           },
         ],
+      }, {
+        test: /\.(?:ico|gif|png|jpg|jpeg|svg|webp|mp4)$/i,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              outputPath: './images/',
+            },
+          },
+        ],
       },
 
       // Images: Copy image files to build folder
