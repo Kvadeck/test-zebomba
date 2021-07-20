@@ -7,12 +7,16 @@ function Game(gameContainerId, data) {
 
     this.build = function () {
         if (this.activeScene instanceof HTMLElement) {
+
             this.character = new Character(this.steps);
             this.character.addTo(this.activeScene);
+
             this.friends = new Container();
             this.navigation = new Container();
+
             this.navigation.addClass("navigation").addTo(this.activeScene);
             this.navigation.addItem(this.friends.addClass("friends nav-item"));
+            
             this.navigation.addItem(
                 new GameObject().addClass("chat-button nav-item")
             );
