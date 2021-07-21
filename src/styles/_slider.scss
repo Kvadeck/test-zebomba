@@ -79,16 +79,16 @@
     }
 
     .slider-item {
+        width: 52px;
+        height: 52px;
         display: flex;
         justify-content: center;
         align-items: center;
         flex: 0 0 auto;
         background-image: url(../images/main/user-bg.png);
-        width: 52px;
-        height: 52px;
-        margin: 0 4px;
         background-size: cover;
         background-repeat: no-repeat;
+        margin: 0 4px;
     }
 
 }

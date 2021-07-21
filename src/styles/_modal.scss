@@ -14,9 +14,10 @@
 
     .overlay {
         position: absolute;
-        display: none;
+        opacity: 0;
         width: 100%;
         height: 100%;
+        transition: opacity .3s;
         background-color: rgba(0, 0, 0, 0.5);
         z-index: 100;
     }
@@ -82,10 +83,11 @@
         background-repeat: no-repeat;
         justify-content: space-between;
 
-        .place {
-            text-align: center;
+        span {
+            margin-top: 1px;
         }
 
+        .place,
         .exp {
             text-align: center;
         }
@@ -115,10 +117,17 @@
                 align-items: center;
                 text-align: center;
                 font-size: 8px;
+                margin-top: -1px;
+            }
+
+            .score-lastname,
+            .score-exp {
+                margin-top: -3px;
             }
 
             .score-exp {
                 text-align: center;
+
             }
 
             .score-lastname.friend {
@@ -139,6 +148,6 @@
     }
 
     .overlay {
-        display: block;
+        opacity: 1;
     }
 }

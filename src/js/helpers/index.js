@@ -1,7 +1,7 @@
 import { isString } from 'lodash'
 
 class Helpers {
-  static createElement(tagName, attributes, styles, textContent) {
+  static createEl(tagName, attributes, styles, textContent) {
     if (arguments.length < 1) {
       throw new TypeError("Failed to execute 'createElement': 1 argument required, but 0 present.")
     } else if (!isString(tagName)) {
