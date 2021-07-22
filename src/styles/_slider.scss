@@ -1,4 +1,4 @@
-.slider {
+#slider {
     display: flex;
     height: 64px;
     width: 548px;
@@ -76,6 +76,14 @@
         padding: 0;
         width: 100%;
         overflow: hidden;
+        margin-left: 4px;
+
+        li {
+            &:first-child {
+                margin-left: 0;
+            }
+        }
+        
     }
 
     .slider-item {

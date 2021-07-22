@@ -1,8 +1,8 @@
 import { sortBy, drop, find } from 'lodash'
 import _ from '../helpers';
 import $ from '../constants'
-import raiting from '../data/raiting';
-import friendsList from '../data/friends';
+import raitingData from '../data/raiting';
+import friendsData from '../data/friends';
 
 
 class GameView {
@@ -24,15 +24,15 @@ class GameView {
     rootEl.append(this.#gameDiv)
 
     this.#gameDiv.append(chipDiv, this.#menuDiv)
-
+    
     this.sliderView()
+    this.menuButtonsView()
     this.modalView()
   }
 
   sliderView() {
-    const items = []
 
-    const slider = _.createEl('div', { class: 'slider' })
+    const slider = _.createEl('div', { id: 'slider' })
 
     const backBtn = _.createEl('button', { class: 'back-btn' })
     const forwardBtn = _.createEl('button', { class: 'forward-btn' })
@@ -57,26 +57,21 @@ class GameView {
 
       itemEl.append((i > 4) ? noPhotoEl : emptyEl)
 
-      items.push(itemEl)
+      list.append(itemEl)
     }
-
-    items.forEach((el) => {
-      list.append(el)
-    })
 
     this.#menuDiv.append(slider)
   }
 
   modalView() {
 
-    const friends = []
-
-    const modal = _.createEl('div', { class: 'modal' })
+    const modal = _.createEl('div', { id: 'modal' })
     const modalBody = _.createEl('div', { class: 'modal-body' })
     const overlay = _.createEl('div', { class: 'overlay' })
+    const modalCloseBtn = _.createEl('button', { class: 'modal-close-btn' })
 
     const modalHeader = _.createEl('span', { class: 'modal-header' },_,`${$.modal.header}`)
-    modalBody.append(modalHeader)
+    modalBody.append(modalHeader, modalCloseBtn)
 
     const modalInner = _.createEl('div', { class: 'modal-inner' })
     modalBody.append(modalInner)
@@ -84,44 +79,42 @@ class GameView {
     const modalScore = _.createEl('div', { class: 'modal-score' })
     const scoreHeader = _.createEl('div', { class: 'score-header' })
     const scoreList = _.createEl('div', { class: 'score-list' })
-    const place = _.createEl('span', { class: 'place' },_, `${$.modal.score.header.place}`)
+    const place = _.createEl('span', { class: 'place' }, _, `${$.modal.score.header.place}`)
     const emptySpan = _.createEl('span')
     const lastName = _.createEl('span', _, _, `${$.modal.score.header.lastName}`)
     const exp = _.createEl('span', { class: 'exp' }, _, `${$.modal.score.header.exp}`)
 
     modalInner.append(modalScore)
-    modalScore.append(scoreHeader)
-    modalScore.append(scoreList)
+    modalScore.append(scoreHeader, scoreList)
 
     scoreHeader.append(place, emptySpan, lastName, exp)
 
-    const sortedRaiting = sortBy(raiting, (el)=> parseFloat(el.points)).reverse()
-    const raitingCollection = drop(sortedRaiting, 3)
+    const raitingCollection = drop(sortBy(raitingData, (el)=> Number(el.points)).reverse(), 3)
 
     raitingCollection.forEach((el, i) => {
         const scoreItem = _.createEl('div', { class: 'score-item' })
         const scorePlace = _.createEl('span', { class: 'score-place' }, _, `${i + 1}`)
-        const isFriend = (find(friendsList, {'id': el.id}) === undefined)
-
+        const isFriend = (find(friendsData, {'id': el.id}) === undefined)
+        
         const scoreIsFriend = _.createEl('span', { class: 'is-friend' }, _, `${(isFriend) ? '' : 'Твой друг'}`)
         const scoreLastname = _.createEl('span', { class: `score-lastname ${(isFriend) ? '' : 'friend'}` }, _, `${el.name} ${el.lastName}`)
         const scoreExp = _.createEl('span', { class: 'score-exp' }, _, `${el.points}`)
 
-        scoreItem.append(scorePlace)
-        scoreItem.append(scoreIsFriend)
-        scoreItem.append(scoreLastname)
-        scoreItem.append(scoreExp)
-
-        friends.push(scoreItem.cloneNode(true))
-
+        scoreItem.append(scorePlace, scoreIsFriend, scoreLastname, scoreExp)
+        scoreList.append(scoreItem.cloneNode(true))
     })
     
-    friends.forEach(el =>{
-      scoreList.append(el)
-    })
-
     modal.append(modalBody, overlay)
     this.#gameDiv.append(modal)
+  }
+
+  menuButtonsView() {
+    const chat = _.createEl('button', { class: 'btn chat' })
+    const email = _.createEl('button', { class: 'btn email' })
+    const score = _.createEl('button', { class: 'btn score' })
+    const university = _.createEl('button', { class: 'btn university' })
+
+    this.#menuDiv.append(chat, email, score, university)
   }
 }
 

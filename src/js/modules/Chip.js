@@ -1,11 +1,8 @@
 import { isElement } from 'lodash'
 import points from '../data/points'
 
-// TODO: Проверить много кликов на кнопке сразу
-
 class Chip {
 
-  // #isMoving = false
   #chip = null
   #button = null
 
@@ -18,20 +15,20 @@ class Chip {
     this.#chip = document.querySelector(elementId)
     this.#button = document.querySelector('.university')
 
-    if (isElement(this.#button)) this.#button.addEventListener('click', this.step, false)
-    this.chip.addEventListener('animationend', this.saveStep)
+    this.#button.addEventListener('click', this.step.bind(this), false)
+    this.#chip.addEventListener('animationend', this.saveCurrentPoint.bind(this))
   }
 
   step() {
     if (this.#stepId >= this.#maxStep) return
     
     if (isElement(this.#chip)) {
-        this.chip.style.animation = `chip-step-${this.#stepId} 0.7s linear forwards`
+        this.#chip.style.animation = `chip-step-${this.#stepId} 0.7s linear forwards`
     }
   }
 
   saveCurrentPoint() {
-    const point = `left: ${points[id].x}px; top: ${points[id].y}px;`
+    const point = `left: ${points[this.#stepId].x}px; top: ${points[this.#stepId].y}px;`
     this.#chip.style = point
     this.#stepId++
   }
