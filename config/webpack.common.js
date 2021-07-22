@@ -1,5 +1,4 @@
-/* eslint-disable import/order */
-/* eslint-disable import/no-extraneous-dependencies */
+
 const paths = require('./paths');
 const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
@@ -64,6 +63,16 @@ module.exports = {
               sassOptions: {
                 importer: globImporter(),
               },
+            },
+          },
+        ],
+      }, {
+        test: /\.(?:ico|gif|png|jpg|jpeg|svg|webp|mp4)$/i,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              outputPath: './images/',
             },
           },
         ],

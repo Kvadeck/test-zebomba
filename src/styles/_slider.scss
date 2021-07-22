@@ -1,4 +1,4 @@
-.slider {
+#slider {
     display: flex;
     height: 64px;
     width: 548px;
@@ -76,19 +76,27 @@
         padding: 0;
         width: 100%;
         overflow: hidden;
+        margin-left: 4px;
+
+        li {
+            &:first-child {
+                margin-left: 0;
+            }
+        }
+        
     }
 
     .slider-item {
+        width: 52px;
+        height: 52px;
         display: flex;
         justify-content: center;
         align-items: center;
         flex: 0 0 auto;
         background-image: url(../images/main/user-bg.png);
-        width: 52px;
-        height: 52px;
-        margin: 0 4px;
         background-size: cover;
         background-repeat: no-repeat;
+        margin: 0 4px;
     }
 
 }

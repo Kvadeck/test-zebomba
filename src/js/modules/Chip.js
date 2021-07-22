@@ -1,28 +1,37 @@
-import points from '../constants/points';
+import { isElement } from 'lodash'
+import points from '../data/points'
 
-export default function Chip() {
-  let id = 0;
-  const game = document.querySelector('.game');
-  game.insertAdjacentHTML('beforeend', '<span class="chip"></span>');
+class Chip {
 
-  const chip = document.querySelector('.chip');
+  #chip = null
+  #button = null
 
-  function makeAstep() {
-    if (id >= 10) {
-      return;
+  #stepId = 0
+  #maxStep = 10
+
+  constructor(elementId) {
+    if (arguments.length < 1) throw new TypeError('Failed to execute : 1 argument required')
+    
+    this.#chip = document.querySelector(elementId)
+    this.#button = document.querySelector('.university')
+
+    this.#button.addEventListener('click', this.step.bind(this), false)
+    this.#chip.addEventListener('animationend', this.saveCurrentPoint.bind(this))
+  }
+
+  step() {
+    if (this.#stepId >= this.#maxStep) return
+    
+    if (isElement(this.#chip)) {
+        this.#chip.style.animation = `chip-step-${this.#stepId} 0.7s linear forwards`
     }
-    chip.style.animation = `chip-step-${id} 0.7s linear`;
-    chip.style.animationFillMode = 'forwards';
   }
 
-  function savePoint() {
-    const point = `left: ${points[id].x}px; top: ${points[id].y}px;`;
-    chip.style = point;
-    id++;
+  saveCurrentPoint() {
+    const point = `left: ${points[this.#stepId].x}px; top: ${points[this.#stepId].y}px;`
+    this.#chip.style = point
+    this.#stepId++
   }
-
-  chip.addEventListener('animationend', savePoint);
-
-  const universityButton = document.querySelector('.university');
-  universityButton.addEventListener('click', makeAstep, false);
 }
+
+export default Chip

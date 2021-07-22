@@ -1,9 +1,7 @@
 /* eslint-disable import/order */
 /* eslint-disable import/no-extraneous-dependencies */
 const paths = require('./paths');
-const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const globImporter = require('node-sass-glob-importer');
@@ -24,17 +22,6 @@ module.exports = {
   plugins: [
     // Removes/cleans build folders and unused assets when rebuilding
     new CleanWebpackPlugin(),
-
-    // Copies files from target to destination folder
-    // new CopyWebpackPlugin({
-    //   patterns: [
-    //     {
-    //       from: path.resolve(__dirname, '../src/images'),
-    //       to: path.resolve(__dirname, '../dist/images'),
-    //       noErrorOnMissing: true,
-    //     },
-    //   ],
-    // }),
 
     new MiniCssExtractPlugin({
       filename: './[name].css',
